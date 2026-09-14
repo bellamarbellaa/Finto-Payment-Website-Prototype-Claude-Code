@@ -5,7 +5,6 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
-      "//": "Single-page app: every route must serve index.html, or a refresh on /login returns 404.",
       "source": "/((?!screenshots/|brand-preview.png).*)",
       "destination": "/index.html"
     }
