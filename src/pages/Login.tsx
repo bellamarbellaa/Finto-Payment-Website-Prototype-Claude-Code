@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { FintoApiError } from '../lib/mock/types';
 import { useAuth } from '../lib/auth';
 import { EyeIcon } from '../components/Icons';
-import { BrandReveal } from '../components/BrandReveal';
+import { RotatingWord } from '../components/RotatingWord';
 
 export function Login() {
   const { signIn } = useAuth();
@@ -44,7 +44,10 @@ export function Login() {
         <aside className="login-brand">
           <div className="login-brand-inner">
             <div className="login-mark">F</div>
-            <h2>Payments that keep up with your business</h2>
+            <h2>
+              Payments that <RotatingWord words={['keep up', 'develop', 'scale up']} /> with your
+              business
+            </h2>
             <p>
               Send, receive and settle in one place — the same Finto rails your customers already
               check out on.
@@ -59,7 +62,6 @@ export function Login() {
                 <strong>Instant</strong>
               </div>
             </div>
-            <BrandReveal src="/brand-preview.png" alt="The Finto home screen, showing balances and recent activity" />
           </div>
         </aside>
 
