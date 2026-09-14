@@ -5,7 +5,7 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
-      "source": "/((?!screenshots/|brand-preview.png).*)",
+      "source": "/((?!brand-preview.png).*)",
       "destination": "/index.html"
     }
   ]

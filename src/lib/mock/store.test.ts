@@ -36,4 +36,16 @@ describe('createDemoStore', () => {
     const store = createDemoStore(storage);
     expect(store.get().user.email).toBe('sofia@marengo.studio');
   });
+
+  it('notifies subscribers only when mutate is called with an event', () => {
+    const store = createDemoStore(createMemoryStorage());
+    const events: string[] = [];
+    store.subscribe((event) => events.push(event.type));
+
+    store.mutate(() => {});
+    expect(events).toHaveLength(0);
+
+    store.mutate(() => {}, { type: 'transaction.created', data: {}, at: new Date().toISOString() });
+    expect(events).toEqual(['transaction.created']);
+  });
 });

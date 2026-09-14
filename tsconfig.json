@@ -16,6 +16,10 @@
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@finto/api-client": ["./src/lib/mock/types.ts"]
+    },
     "types": ["vite/client"]
   },
   "include": ["src", "vite.config.ts"]

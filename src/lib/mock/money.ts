@@ -23,3 +23,14 @@ export function money(minorUnits: bigint, currency: string): Money {
     symbol
   };
 }
+
+/** Same contract as finto-backend's parseAmount: a decimal string in, integer minor units out. */
+export function parseAmountMinor(amount: string): bigint {
+  const trimmed = amount.trim();
+  const negative = trimmed.startsWith('-');
+  const unsigned = negative ? trimmed.slice(1) : trimmed;
+  const [wholePart, fractionPart = ''] = unsigned.split('.');
+  const cents = (fractionPart + '00').slice(0, 2);
+  const minor = BigInt(wholePart || '0') * 100n + BigInt(cents || '0');
+  return negative ? -minor : minor;
+}

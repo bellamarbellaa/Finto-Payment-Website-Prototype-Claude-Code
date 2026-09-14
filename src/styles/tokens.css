@@ -1,8 +1,8 @@
 /* ==========================================================================
-   Design tokens — ported directly from the real Finto app (finto-web) so
-   this showcase resolves to the exact same values, not a generic look.
+   Finto design tokens — lifted directly from the design file so the built
+   app and the prototype resolve to the same values.
    8pt spacing · 16/18/20/26px radii · Manrope 500–800
-   Lime for primary action, forest for brand surfaces.
+   Lime for primary action, forest for balance surfaces.
    ========================================================================== */
 
 :root {
@@ -22,7 +22,7 @@
 
   /* Brand */
   --forest: #14301A;
-  --forest-2: #3A4740;
+  --forest-2: #3A4740;      /* the frozen-card grey from the design */
   --lime: #A9EE68;
   --lime-2: #96E44F;
   --lime-wash: #DCF5B8;
@@ -34,6 +34,13 @@
   --danger-bg: #FDECEA;
   --warn: #8A6410;
   --warn-bg: #FBF0D9;
+
+  /* Tints — the avatar chip palette */
+  --tint-lime-bg: #DCF5B8;      --tint-lime-fg: #2F5B1E;
+  --tint-forest-bg: #DDE7DC;    --tint-forest-fg: #14301A;
+  --tint-sand-bg: #F3EBDA;      --tint-sand-fg: #7A5C21;
+  --tint-sky-bg: #DEE9F2;       --tint-sky-fg: #2C4F6B;
+  --tint-stone-bg: #EDEFEA;     --tint-stone-fg: #4A514A;
 
   /* Radii */
   --r-sm: 10px;
@@ -67,11 +74,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-a { color: inherit; }
 button, input, select, textarea { font: inherit; color: inherit; }
-button { cursor: pointer; border: none; background: none; }
+button { cursor: pointer; }
 button:disabled { cursor: not-allowed; }
 
+/* Amounts line up in columns only with tabular figures. */
 .tnum { font-variant-numeric: tabular-nums; }
 
 :focus-visible {
@@ -88,3 +95,14 @@ button:disabled { cursor: not-allowed; }
     transition-duration: .01ms !important;
   }
 }
+
+/* Scrollbars stay out of the way but remain usable. */
+* { scrollbar-width: thin; scrollbar-color: var(--hairline-2) transparent; }
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb {
+  background: var(--hairline-2);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-track { background: transparent; }

@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Portfolio case-study site for the Finto Payment App project",
+  "description": "Finto's web app running standalone on seeded demo data, no backend required",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -14,11 +14,13 @@
   },
   "dependencies": {
     "framer-motion": "^13.2.0",
+    "qrcode": "^1.5.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.1"
   },
   "devDependencies": {
+    "@types/qrcode": "^1.5.5",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",

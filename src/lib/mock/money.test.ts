@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { money } from './money';
+import { money, parseAmountMinor } from './money';
 
 describe('money', () => {
   it('formats a whole-dollar USD amount with thousands separators', () => {
@@ -20,5 +20,28 @@ describe('money', () => {
   it('falls back to the currency code as symbol for unknown currencies', () => {
     const m = money(1000n, 'JPY');
     expect(m.symbol).toBe('JPY ');
+  });
+});
+
+describe('parseAmountMinor', () => {
+  it('parses a plain decimal string', () => {
+    expect(parseAmountMinor('240.50')).toBe(24050n);
+  });
+
+  it('parses a whole-number string with no decimal point', () => {
+    expect(parseAmountMinor('240')).toBe(24000n);
+  });
+
+  it('pads a single decimal digit', () => {
+    expect(parseAmountMinor('240.5')).toBe(24050n);
+  });
+
+  it('round-trips through money()', () => {
+    const minor = parseAmountMinor('99.99');
+    expect(money(minor, 'USD').amount).toBe('99.99');
+  });
+
+  it('parses negative amounts', () => {
+    expect(parseAmountMinor('-10.00')).toBe(-1000n);
   });
 });

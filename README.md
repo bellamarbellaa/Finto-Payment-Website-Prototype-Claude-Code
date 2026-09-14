@@ -1,21 +1,19 @@
-# Finto — portfolio showcase
+# Finto — standalone demo
 
-A standalone case-study site for [Finto](https://github.com/bellamarbellaa/Finto-Payment-App-in-Claude-Code), a fictional multi-currency banking app built with Claude Code.
+A fully working copy of [Finto](https://github.com/bellamarbellaa/Finto-Payment-App-in-Claude-Code)'s web app — every screen (Home, Pay, Activity, Cards, Profile, Security, and the rest) — running entirely on seeded, in-browser data instead of the real backend.
 
-This is intentionally **not** the real app — it's a lighter portfolio page: a description of what was built, real screenshots from the actual product, and one genuinely working piece, the Login screen, which checks your credentials against a seeded demo account and shows a preview of the dashboard on success.
-
-It has no backend, no database, and no connection to the real Finto project's Supabase/Render infrastructure — everything here runs on static, seeded data in the browser.
+It has no backend, no database, and no connection to the real Finto project's Supabase/Render infrastructure. Signing in, sending money, freezing a card, opening a balance — all of it works, and all of it is local to your browser (persisted to `localStorage`, so it survives a reload).
 
 ## Stack
 
-React 19 · Vite · TypeScript · React Router · Framer Motion (for the login brand-panel animation)
+React 19 · Vite · TypeScript · React Router · Framer Motion (login brand-panel animation)
 
 ## Running it
 
 ```bash
 npm install
 npm run dev      # http://localhost:5174
-npm test         # Vitest — money formatting, the local store, and the sign-in check
+npm test         # Vitest — money formatting, the local store, and every mock API endpoint
 npm run build
 ```
 
@@ -25,4 +23,4 @@ npm run build
 
 ## Where the code came from
 
-The `src/lib/mock/` files (`money.ts`, `store.ts`, `data.ts`, `auth.ts`) started life on an abandoned `demo-mode` branch of the real Finto repo, where they were built and unit-tested as part of a (since-reconsidered) plan to add fake-data support directly into the real web app. They were ported here — trimmed down to just what a login-only demo needs — once the decision was made to keep the real app untouched and build the portfolio site as a fully separate project instead.
+`src/lib/mock/` is a from-scratch mock implementation of Finto's real API contract (`finto-backend/packages/api-client`) — same types, same error codes, same double-entry-style balance updates (integer minor units, never floats), same realtime-event shape the real app's `LiveProvider` expects. Everything above it — every screen, `Shell.tsx`, `lib/auth.tsx`, `lib/live.tsx`, the full design system — is ported directly from `finto-web`, largely unmodified, because it never needed to know its data isn't coming from a server.
