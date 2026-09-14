@@ -3,6 +3,7 @@ import { FintoApiError } from '../lib/mock/types';
 import { useAuth } from '../lib/auth';
 import { EyeIcon } from '../components/Icons';
 import { RotatingWord } from '../components/RotatingWord';
+import { AmbientBackdrop } from '../components/AmbientBackdrop';
 
 export function Login() {
   const { signIn } = useAuth();
@@ -42,6 +43,7 @@ export function Login() {
         {/* The forest panel is the brand surface from the design; on a phone
             width it collapses away so the form gets the whole screen. */}
         <aside className="login-brand">
+          <AmbientBackdrop />
           <div className="login-brand-inner">
             <div className="login-mark">F</div>
             <h2>
