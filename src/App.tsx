@@ -5,8 +5,8 @@ import { Login } from './pages/Login';
 export function App() {
   return (
     <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Login />} />
+      <Route path="/case-study" element={<Landing />} />
     </Routes>
   );
 }

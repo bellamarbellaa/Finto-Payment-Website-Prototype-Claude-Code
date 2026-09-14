@@ -38,7 +38,9 @@ export function Login() {
       <div className="login-split">
         <aside className="login-brand">
           <div className="login-brand-inner">
-            <div className="login-mark">F</div>
+            <Link to="/case-study" className="login-mark" aria-label="About this project">
+              F
+            </Link>
             <h2>Payments that keep up with your business</h2>
             <p>
               Send, receive and settle in one place — the same Finto rails your customers already
@@ -55,6 +57,9 @@ export function Login() {
               </div>
             </div>
             <BrandReveal src="/brand-preview.png" alt="The Finto home screen, showing balances and recent activity" />
+            <Link to="/case-study" style={{ fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,.75)' }}>
+              Read the full case study →
+            </Link>
           </div>
         </aside>
 
@@ -76,8 +81,8 @@ export function Login() {
               <div className="success-preview">
                 <img src="/brand-preview.png" alt="The Finto home screen" />
               </div>
-              <Link to="/" className="btn btn-ghost btn-block">
-                Back to the case study
+              <Link to="/case-study" className="btn btn-ghost btn-block">
+                Read the case study
               </Link>
             </div>
           ) : (

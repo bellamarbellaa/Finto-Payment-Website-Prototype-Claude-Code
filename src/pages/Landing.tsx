@@ -15,15 +15,15 @@ export function Landing() {
   return (
     <div>
       <nav className="site-nav">
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: 'inherit' }}>
           <div className="login-mark">F</div>
           <strong style={{ fontSize: 16, fontWeight: 800, letterSpacing: '-.02em' }}>Finto</strong>
-        </div>
+        </Link>
         <div className="site-nav-links">
           <a className="btn btn-ghost btn-sm" href={REPO_URL} target="_blank" rel="noreferrer">
             View source
           </a>
-          <Link className="btn btn-primary btn-sm" to="/login">
+          <Link className="btn btn-primary btn-sm" to="/">
             Try the sign-in
           </Link>
         </div>
@@ -37,7 +37,7 @@ export function Landing() {
           and a React Native mobile app, all sharing one API and one set of types.
         </p>
         <div className="hero-actions">
-          <Link className="btn btn-primary" to="/login">
+          <Link className="btn btn-primary" to="/">
             Try the sign-in demo
           </Link>
           <a className="btn btn-ghost" href={REPO_URL} target="_blank" rel="noreferrer">
@@ -139,7 +139,7 @@ export function Landing() {
             The Login screen here is a real, working demo — it checks your credentials against a
             seeded account, with the same brand animation as the actual app.
           </p>
-          <Link className="btn btn-primary" to="/login">
+          <Link className="btn btn-primary" to="/">
             Sign in as the demo account
           </Link>
         </div>
