@@ -1,26 +1,47 @@
-# Finto — standalone demo
+# Finto — A Mobile Banking Product Built With an AI Agent
 
-A fully working copy of [Finto](https://github.com/bellamarbellaa/Finto-Payment-App-in-Claude-Code)'s web app — every screen (Home, Pay, Activity, Cards, Profile, Security, and the rest) — running entirely on seeded, in-browser data instead of the real backend.
+Designed and developed a **full mobile-banking web app (13+ screens)** for **Finto**, using **Claude as an AI-assisted development partner**, turning a product concept — pay, send, request, freeze a card, review activity — into a working, interactive digital experience.
 
-It has no backend, no database, and no connection to the real Finto project's Supabase/Render infrastructure. Signing in, sending money, freezing a card, opening a balance — all of it works, and all of it is local to your browser (persisted to `localStorage`, so it survives a reload).
+This is a standalone showcase version: it runs entirely on seeded, in-browser demo data, so anyone can log in and use every feature without a real backend, database, or bank connection behind it.
+
+## How to access
+
+**[finto-showcase.vercel.app/login](https://finto-showcase.vercel.app/login)**
+
+Demo login (pre-filled on the screen):
+- Email: `sofia@marengo.studio`
+- Password: `sofia2026-finto`
+
+## What I did
+
+- Directed Claude through the full build, translating product requirements, UX flows, and visual design decisions into functional React, TypeScript, and CSS.
+- Designed a consistent, on-brand UI/UX system across the entire app — Home, Pay, Send, Request Money, Activity, Cards, Card Controls, Profile, Security, Notifications, Help, and Scan — including a branded, animated login screen.
+- Built realistic product behavior on mock data: sending money, freezing/unfreezing a card, opening a new account, live-updating balances and activity — all persisted locally so the demo survives a page reload.
+- Iteratively prompted the AI agent to refine responsiveness, spacing, and visual consistency across desktop and mobile.
+- Set up automated tests to verify the app's core logic (money formatting, account balances, and every mock banking action) behaves correctly.
+- Deployed the finished product to Vercel for public, shareable access.
+
+## Screens & components
+
+| Area | Screens |
+|---|---|
+| Access | Login (animated brand panel) |
+| Home & Money Movement | Home, Pay, Send Amount, Request Money, Scan |
+| Accounts | Accounts, Activity, Transaction Detail |
+| Cards | Cards, Card Controls |
+| Account Management | Profile, Security, Notifications, Help |
+
+Shared building blocks — a persistent app shell/navigation, a reusable design system (buttons, cards, inputs, modals), and an auth layer — carry the same look and behavior across every screen.
 
 ## Stack
 
-React 19 · Vite · TypeScript · React Router · Framer Motion (login brand-panel animation)
+React 19 · Vite · TypeScript · React Router · Framer Motion (login animation)
 
-## Running it
+## Running it locally
 
 ```bash
 npm install
 npm run dev      # http://localhost:5174
-npm test         # Vitest — money formatting, the local store, and every mock API endpoint
+npm test         # verifies money formatting, account data, and every banking action
 npm run build
 ```
-
-## Demo credentials
-
-`sofia@marengo.studio` / `sofia2026-finto` — pre-filled on the Login screen.
-
-## Where the code came from
-
-`src/lib/mock/` is a from-scratch mock implementation of Finto's real API contract (`finto-backend/packages/api-client`) — same types, same error codes, same double-entry-style balance updates (integer minor units, never floats), same realtime-event shape the real app's `LiveProvider` expects. Everything above it — every screen, `Shell.tsx`, `lib/auth.tsx`, `lib/live.tsx`, the full design system — is ported directly from `finto-web`, largely unmodified, because it never needed to know its data isn't coming from a server.
